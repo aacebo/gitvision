@@ -1,5 +1,7 @@
 @import '../../../styles/colors';
 
+$border-width: -8px;
+
 :host {
   display: block;
   height: 100%;
@@ -7,21 +9,29 @@
   uni-sidenav-container {
     height: 100%;
 
+    uni-sidenav-content {
+      background-color: $black;
+    }
+
     uni-sidenav {
       background-color: $dark-grey;
 
       .route {
-        margin: 5px 10px;
-        color: rgba($white, 0.5);
+        padding: 5px 10px;
+        opacity: 0.5;
+        outline: none;
+        box-shadow: 12px 0 0 $border-width rgba(0, 0, 0, 0) inset;
+        transition: 0.2s ease-in-out;
 
         &.route--active {
-          color: $white;
+          opacity: 1;
+          box-shadow: 12px 0 0 $border-width var(--primary) inset;
+
+          button {
+            color: var(--primary);
+          }
         }
       }
-    }
-
-    uni-sidenav-content {
-      background-color: $black;
     }
   }
 }

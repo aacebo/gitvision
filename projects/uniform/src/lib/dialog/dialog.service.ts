@@ -41,7 +41,7 @@ export class UniDialogService {
     return -1;
   }
 
-  open<T = any>(content: T, options?: IUniDialogOptions) {
+  open<T = any>(content: T, options = UNI_DIALOG_DEFAULT_OPTIONS) {
     const overlayRef = this._overlay.create({
       ...UNI_DIALOG_DEFAULT_OPTIONS,
       ...options,

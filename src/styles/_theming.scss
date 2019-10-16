@@ -1,5 +1,6 @@
 @import '../../projects/uniform/src/lib/core/styles/theming';
+@import './colors';
 
-@include uni-theme(map-merge((
-  'primary': #155592
-), $uni-theme-colors));
+@include uni-theme(map-merge($uni-theme-colors, (
+  'primary': $blue-green
+)));

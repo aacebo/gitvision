@@ -10,3 +10,7 @@
     @include uni-arrow($dark-grey, $dark-grey);
   }
 }
+
+.uni-dialog-container {
+  background-color: $dark-grey !important;
+}
