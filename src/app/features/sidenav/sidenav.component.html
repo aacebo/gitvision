@@ -1,11 +1,15 @@
 <uni-sidenav-container>
   <uni-sidenav>
     <button
+      class="route"
+      *ngFor="let item of items"
       uni-icon-button
-      uniTooltip="Home"
+      [uniTooltip]="item.tooltip"
       uniTooltipPosition="right"
+      [routerLink]="item.route"
+      routerLinkActive="route--active"
     >
-      <uni-icon icon="fa-home"></uni-icon>
+      <uni-icon [icon]="item.icon"></uni-icon>
     </button>
   </uni-sidenav>
 

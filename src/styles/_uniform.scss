@@ -1,0 +1,12 @@
+@import '../../projects/uniform/src/lib/core/styles/arrow';
+@import './colors';
+
+.uni-popover-panel {
+  .uni-popover {
+    background-color: $dark-grey;
+    border-color: $dark-grey;
+    color: $white;
+
+    @include uni-arrow($dark-grey, $dark-grey);
+  }
+}

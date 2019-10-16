@@ -15,6 +15,7 @@ import { UniIconService } from './icon.service';
 })
 export class UniIconComponent {
   @Input() icon: string;
+  @Input() prefix?: string;
 
   constructor(readonly iconService: UniIconService) {}
 }

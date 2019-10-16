@@ -10,8 +10,13 @@
     uni-sidenav {
       background-color: $dark-grey;
 
-      button {
+      .route {
         margin: 5px 10px;
+        color: rgba($white, 0.5);
+
+        &.route--active {
+          color: $white;
+        }
       }
     }
 
