@@ -1,0 +1,22 @@
+@import '../../../styles/colors';
+
+:host {
+  display: block;
+  height: 100%;
+
+  uni-sidenav-container {
+    height: 100%;
+
+    uni-sidenav {
+      background-color: $dark-grey;
+
+      button {
+        margin: 5px 10px;
+      }
+    }
+
+    uni-sidenav-content {
+      background-color: $black;
+    }
+  }
+}
