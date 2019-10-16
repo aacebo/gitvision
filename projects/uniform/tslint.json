@@ -1,0 +1,19 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "no-host-metadata-property": false,
+    "no-input-rename": false,
+    "directive-selector": [
+      true,
+      "attribute",
+      "uni",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "uni",
+      "kebab-case"
+    ]
+  }
+}
