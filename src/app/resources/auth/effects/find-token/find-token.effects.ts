@@ -3,6 +3,7 @@ import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, switchMap, catchError, tap } from 'rxjs/operators';
 
+import { environment } from '../../../../../environments/environment';
 import * as actions from '../../actions/find-token.actions';
 import { AuthHttpService } from '../../services';
 
@@ -11,7 +12,7 @@ export class FindTokenEffects {
   readonly findToken$ = createEffect(() => this._actions$.pipe(
     ofType(actions.findToken),
     switchMap(a => {
-      const token = localStorage.getItem('gitvision--token');
+      const token = localStorage.getItem(environment.api.key);
 
       if (token && !a.code) {
         return of(actions.findTokenSuccess({ token }));
@@ -27,7 +28,9 @@ export class FindTokenEffects {
   readonly findTokenSuccess$ = createEffect(() => this._actions$.pipe(
     ofType(actions.findTokenSuccess),
     tap(a => {
-      localStorage.setItem('gitvision--token', a.token);
+      if (a.token) {
+        localStorage.setItem(environment.api.key, a.token);
+      }
     }),
   ), { dispatch: false });
 

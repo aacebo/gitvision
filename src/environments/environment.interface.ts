@@ -5,5 +5,6 @@ export interface IEnvironment {
     readonly auth: string;
     readonly clientId: string;
     readonly secret: string;
+    readonly key: string;
   };
 }
