@@ -1,4 +1,4 @@
-import { Injectable, ComponentFactoryResolver } from '@angular/core';
+import { Injectable, ComponentFactoryResolver, Injector } from '@angular/core';
 import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
 import { take } from 'rxjs/operators';
@@ -23,6 +23,7 @@ export class UniDialogService {
 
   constructor(
     private readonly _overlay: Overlay,
+    private readonly _injector: Injector,
     private readonly _resolver: ComponentFactoryResolver,
   ) {}
 
@@ -49,7 +50,13 @@ export class UniDialogService {
     });
 
     const dialogRef = new UniDialogRef(overlayRef, options.disableClose);
-    const portal = new ComponentPortal(UniDialogContainerComponent, undefined, this._getInjector(dialogRef, content, options));
+    const portal = new ComponentPortal(
+      UniDialogContainerComponent,
+      undefined,
+      this._getInjector(dialogRef, content, options),
+      this._resolver,
+    );
+
     overlayRef.attach(portal);
     const dialog: IUniDialog = {
       id: this._id,
@@ -77,7 +84,7 @@ export class UniDialogService {
       tokens.set(UNI_DIALOG_DATA, options.data);
     }
 
-    return new PortalInjector(null, tokens);
+    return new PortalInjector(this._injector, tokens);
   }
 
   private _getPositionStrategy() {

@@ -1,0 +1,33 @@
+@import '../../../../../styles/colors';
+
+:host {
+  display: block;
+
+  uni-form-field {
+    cursor: pointer;
+    border: 2px solid rgba($dark-grey, 0.5);
+    background-color: rgba($dark-grey, 0.5);
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+
+    &:hover {
+      border-color: rgba($white, 0.7);
+    }
+
+    input {
+      cursor: pointer;
+      background-color: transparent;
+      color: $white;
+
+      &::placeholder {
+        color: rgba($white, 0.4);
+      }
+    }
+
+    uni-icon {
+      color: rgba($white, 0.7);
+      margin-right: 10px;
+      font-size: 15px;
+    }
+  }
+}

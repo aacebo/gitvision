@@ -21,3 +21,10 @@
 .uni-dialog-container {
   background-color: $dark-grey !important;
 }
+
+.uni-dialog-transparent-panel {
+  .uni-dialog-container {
+    background-color: transparent !important;
+    box-shadow: none;
+  }
+}

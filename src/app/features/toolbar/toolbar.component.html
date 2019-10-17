@@ -1,5 +1,7 @@
-<uni-toolbar color="primary">
-  <span class="title"></span>
+<uni-toolbar>
+  <div class="spacer">
+    <app-search-input></app-search-input>
+  </div>
 
   <app-user-icon-button
     [auth]="user.auth$ | async"

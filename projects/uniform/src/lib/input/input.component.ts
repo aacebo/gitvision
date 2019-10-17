@@ -31,4 +31,8 @@ export class UniInputComponent extends UniFormFieldControlBase<string> {
   }
 
   onInput() {}
+
+  focus() {
+    this._element.focus();
+  }
 }

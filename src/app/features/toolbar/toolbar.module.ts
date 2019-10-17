@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UniToolbarModule } from 'uniform';
 
 import { UserModule } from '../user';
+import { SearchModule } from '../search';
 
 import { ToolbarComponent } from './toolbar.component';
 
@@ -15,6 +16,7 @@ import { ToolbarComponent } from './toolbar.component';
     UniToolbarModule,
 
     UserModule,
+    SearchModule,
   ],
 })
 export class ToolbarModule { }

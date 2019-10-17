@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import * as qs from 'qs';
 import { UniPopoverDirective } from 'uniform';
+import * as qs from 'qs';
 
 import { environment } from '../../../../../environments/environment';
 import { IUser } from '../../../../resources/user';

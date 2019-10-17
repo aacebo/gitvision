@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, Injector } from '@angular/core';
 import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector, ComponentType } from '@angular/cdk/portal';
 import { take } from 'rxjs/operators';
@@ -25,6 +25,7 @@ export class UniToastService {
   constructor(
     @Inject(UNI_TOAST_CONFIG) private readonly _config: IUniToastConfig,
     private readonly _overlay: Overlay,
+    private readonly _injector: Injector,
   ) {}
 
   open(options: IUniToastOptions) {
@@ -86,7 +87,7 @@ export class UniToastService {
     tokens.set(UNI_TOAST_OPTIONS, options);
     tokens.set(UNI_TOAST_CONFIG, this._config);
 
-    return new PortalInjector(null, tokens);
+    return new PortalInjector(this._injector, tokens);
   }
 
   private _getPositionStrategy(position: UniToastPosition, latest: ClientRect | DOMRect) {

@@ -17,6 +17,12 @@ export class UniDialogRef {
                       .pipe(take(1))
                       .subscribe(() => this.dismiss());
     }
+
+    document.onkeydown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        this.dismiss();
+      }
+    };
   }
 
   dismiss() {

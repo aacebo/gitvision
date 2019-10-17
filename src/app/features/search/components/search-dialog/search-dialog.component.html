@@ -1,0 +1,11 @@
+<uni-form-field [class.focused]="focused$ | async">
+  <input
+    uniInput
+    placeholder="Search..."
+    [formControl]="control"
+    (focus)="focused$.next(true)"
+    (focusout)="focused$.next(false)"
+  />
+
+  <uni-icon icon="fa-search"></uni-icon>
+</uni-form-field>
