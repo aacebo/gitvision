@@ -1,4 +1,4 @@
-import { Directive, OnInit, Input, ElementRef, TemplateRef } from '@angular/core';
+import { Directive, OnInit, Input, ElementRef, TemplateRef, HostListener } from '@angular/core';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 
@@ -20,7 +20,7 @@ export class UniPopoverDirective implements OnInit {
   @Input('uniPopoverDisabled') disabled = false;
   @Input('uniPopoverPosition') position = UniPosition.Top;
   @Input('uniPopoverTrigger') trigger = UniPopoverTrigger.Click;
-  @Input('uniPopoverPanelClass') panelClass = 'uni-popover-panel';
+  @Input('uniPopoverPanelClass') panelClass?: string;
   @Input('uniPopoverHasBackdrop') hasBackdrop = true;
   @Input('uniPopoverBackdropClass') backdropClass = 'cdk-overlay-transparent-backdrop';
   @Input('uniPopoverOrigin') origin: HTMLElement;
@@ -44,45 +44,52 @@ export class UniPopoverDirective implements OnInit {
 
   constructor(
     private readonly _overlay: Overlay,
-    private readonly _el: ElementRef,
+    private readonly _el: ElementRef<HTMLElement>,
   ) {}
 
   ngOnInit() {
     this._overlayRef = this._overlay.create({
       positionStrategy: this._positionStrategy,
-      panelClass: this.panelClass,
+      panelClass: ['uni-popover-panel', this.panelClass],
       hasBackdrop: this.hasBackdrop,
       backdropClass: this.backdropClass,
     });
 
     this._overlayRef.backdropClick().subscribe(() => {
-      this._hide();
+      this.hide();
     });
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape() {
+    if (this._overlayRef.hasAttached()) {
+      this.hide();
+    }
   }
 
   onMouseEnter() {
     if (this.trigger === UniPopoverTrigger.Hover) {
-      this._show();
+      this.show();
     }
   }
 
   onMouseLeave() {
     if (this.trigger === UniPopoverTrigger.Hover) {
-      this._hide();
+      this.hide();
     }
   }
 
   onClick() {
     if (this.trigger === UniPopoverTrigger.Click) {
       if (this._overlayRef.hasAttached()) {
-        this._hide();
+        this.hide();
       } else {
-        this._show();
+        this.show();
       }
     }
   }
 
-  private _show() {
+  show() {
     if (!this.disabled && !this._overlayRef.hasAttached()) {
       this._overlayRef.updatePositionStrategy(this._positionStrategy);
       const portal = new ComponentPortal(UniPopoverComponent);
@@ -92,7 +99,7 @@ export class UniPopoverDirective implements OnInit {
     }
   }
 
-  private _hide() {
+  hide() {
     this._overlayRef.detach();
   }
 }

@@ -1,5 +1,8 @@
 <uni-toolbar color="primary">
   <span class="title"></span>
 
-  <app-user-icon-button></app-user-icon-button>
+  <app-user-icon-button
+    [auth]="user.auth$ | async"
+    (action)="onUserAction($event)"
+  ></app-user-icon-button>
 </uni-toolbar>

@@ -9,6 +9,7 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     resolve: { user: DashboardResolver },
+
   },
 ];
 

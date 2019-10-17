@@ -5,7 +5,9 @@ import { AuthService } from '../../resources/auth';
 
 @Injectable()
 export class DashboardResolver implements Resolve<any> {
-  constructor(private readonly _auth: AuthService) { }
+  constructor(
+    private readonly _auth: AuthService,
+  ) { }
 
   resolve(route: ActivatedRouteSnapshot) {
     const code = route.queryParamMap.get('code');

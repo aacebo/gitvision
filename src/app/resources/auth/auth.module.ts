@@ -11,6 +11,7 @@ import * as effects from './effects';
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature([
       effects.FindTokenEffects,
+      effects.RemoveTokenEffects,
     ]),
   ],
 })

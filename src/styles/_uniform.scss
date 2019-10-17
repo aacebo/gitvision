@@ -2,6 +2,13 @@
 @import './colors';
 
 .uni-popover-panel {
+  &.uni-popover-no-padding-panel {
+    .uni-popover {
+      padding: 0;
+      border: none;
+    }
+  }
+
   .uni-popover {
     background-color: $dark-grey;
     border-color: $dark-grey;

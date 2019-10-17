@@ -17,7 +17,7 @@ export class UniTooltipDirective implements OnInit {
   @Input('uniTooltip') content: string | TemplateRef<any>;
   @Input('uniTooltipDisabled') disabled = false;
   @Input('uniTooltipPosition') position = UniPosition.Top;
-  @Input('uniTooltipPanelClass') panelClass = 'uni-tooltip-panel';
+  @Input('uniTooltipPanelClass') panelClass?: string;
   @Input('uniTooltipOrigin') origin: HTMLElement;
 
   private _overlayRef: OverlayRef;
@@ -39,14 +39,14 @@ export class UniTooltipDirective implements OnInit {
 
   constructor(
     private readonly _overlay: Overlay,
-    private readonly _el: ElementRef,
+    private readonly _el: ElementRef<HTMLElement>,
   ) {}
 
   ngOnInit() {
     const positionStrategy = this._positionStrategy;
     this._overlayRef = this._overlay.create({
       positionStrategy,
-      panelClass: this.panelClass,
+      panelClass: ['uni-tooltip-panel', this.panelClass],
     });
   }
 

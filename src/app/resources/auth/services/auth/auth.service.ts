@@ -21,4 +21,8 @@ export class AuthService {
   findToken(code: string) {
     this._store$.dispatch(actions.findToken({ code }));
   }
+
+  removeToken() {
+    this._store$.dispatch(actions.removeToken());
+  }
 }

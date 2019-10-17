@@ -1,7 +1,7 @@
 <button
-  *ngIf="!user.auth$"
+  *ngIf="!auth"
   uni-icon-button
-  [uniPopover]="popoverContent"
+  [uniPopover]="popoverLogin"
   uniPopoverPosition="bottom left"
 >
   <uni-icon
@@ -10,10 +10,40 @@
   ></uni-icon>
 </button>
 
-<ng-template #popoverContent>
+<img
+  *ngIf="auth"
+  class="user--icon"
+  [src]="auth.avatar_url"
+  [uniPopover]="popoverLoggedIn"
+  uniPopoverPosition="bottom left"
+  uniPopoverPanelClass="uni-popover-no-padding-panel"
+/>
+
+<ng-template #popoverLogin>
   <button
     uni-button
     color="primary"
     (click)="login()"
   >LOGIN</button>
+</ng-template>
+
+<ng-template #popoverLoggedIn>
+  <div
+    class="popover"
+    *ngIf="auth"
+  >
+    <div class="popover--title">
+      {{ auth.name }}
+      <small class="muted">({{ auth.login }})</small>
+    </div>
+
+    <div
+      *ngFor="let action of USER_ACTIONS"
+      class="popover--button"
+      (click)="onAction(action)"
+    >
+      <uni-icon [icon]="action.icon"></uni-icon>
+      <span>{{ action.text }}</span>
+    </div>
+  </div>
 </ng-template>
