@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import * as qs from 'qs';
 
 import { environment } from '../../../../../environments/environment';
+import { UserService } from '../../../../resources/user';
 
 @Component({
   selector: 'app-user-icon-button',
@@ -10,6 +11,8 @@ import { environment } from '../../../../../environments/environment';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserIconButtonComponent {
+  constructor(readonly user: UserService) { }
+
   login() {
     const query = qs.stringify({
       client_id: environment.api.clientId,

@@ -1,4 +1,5 @@
 <button
+  *ngIf="!user.auth$"
   uni-icon-button
   [uniPopover]="popoverContent"
   uniPopoverPosition="bottom left"
