@@ -20,7 +20,7 @@ export class SearchDialogComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.control.valueChanges.pipe(
 
-    ).subscribe(() => console.log('changed'));
+    ).subscribe();
   }
 
   ngAfterViewInit() {
