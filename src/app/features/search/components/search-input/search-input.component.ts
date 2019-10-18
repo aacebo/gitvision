@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { UniDialogService } from 'uniform';
 
 import { SearchDialogComponent } from '../search-dialog';
+import { SearchService } from '../../../../resources/search';
 
 @Component({
   selector: 'app-search-input',
@@ -10,11 +11,19 @@ import { SearchDialogComponent } from '../search-dialog';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchInputComponent {
-  constructor(private readonly _dialog: UniDialogService) { }
+  constructor(
+    private readonly _dialog: UniDialogService,
+    readonly search: SearchService,
+  ) { }
 
   onClick() {
     this._dialog.open(SearchDialogComponent, {
       panelClass: 'uni-dialog-transparent-panel',
     });
+  }
+
+  onClear(e: Event) {
+    e.stopImmediatePropagation();
+    this.search.clear();
   }
 }

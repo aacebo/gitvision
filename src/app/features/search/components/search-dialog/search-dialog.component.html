@@ -1,11 +1,20 @@
 <uni-form-field [class.focused]="focused$ | async">
   <input
     uniInput
+    spellcheck="false"
+    autocomplete="false"
     placeholder="Search..."
     [formControl]="control"
+    [value]="(search.text$ | async) || ''"
     (focus)="focused$.next(true)"
     (focusout)="focused$.next(false)"
   />
+
+  <uni-icon
+    *ngIf="search.text$ | async"
+    icon="fa-times"
+    (click)="onClear($event)"
+  ></uni-icon>
 
   <uni-icon icon="fa-search"></uni-icon>
 </uni-form-field>

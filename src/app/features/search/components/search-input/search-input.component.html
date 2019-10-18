@@ -2,8 +2,15 @@
   <input
     uniInput
     placeholder="Search..."
+    [value]="(search.text$ | async) || ''"
     disabled
   />
+
+  <uni-icon
+    *ngIf="search.text$ | async"
+    icon="fa-times"
+    (click)="onClear($event)"
+  ></uni-icon>
 
   <uni-icon icon="fa-search"></uni-icon>
 </uni-form-field>
