@@ -1,17 +1,18 @@
 @import '../../../../../styles/colors';
 
+$outline: 0 0 0 2pt;
+
 :host {
   display: block;
 
   uni-form-field {
     cursor: pointer;
-    border: 2px solid rgba($dark-grey, 0.5);
     background-color: rgba($dark-grey, 0.5);
     transition-duration: 0.1s;
     transition-timing-function: ease-in-out;
 
     &:hover {
-      border-color: rgba($white, 0.7);
+      box-shadow: $outline var(--primary);
     }
 
     input {

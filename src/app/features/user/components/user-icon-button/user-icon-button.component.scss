@@ -1,5 +1,7 @@
 @import '../../../../../styles/colors';
 
+$outline: 0 0 0 2pt;
+
 :host {
   display: inherit;
   margin: auto 0;
@@ -9,6 +11,10 @@
     border-radius: 100px;
     cursor: pointer;
     margin: auto;
+
+    &:hover {
+      box-shadow: $outline var(--primary);
+    }
   }
 }
 
