@@ -46,7 +46,7 @@ export class UniDialogService {
     const overlayRef = this._overlay.create({
       ...UNI_DIALOG_DEFAULT_OPTIONS,
       ...options,
-      positionStrategy: this._getPositionStrategy(),
+      positionStrategy: this._getPositionStrategy(options),
     });
 
     const dialogRef = new UniDialogRef(overlayRef, options.disableClose);
@@ -87,8 +87,16 @@ export class UniDialogService {
     return new PortalInjector(this._injector, tokens);
   }
 
-  private _getPositionStrategy() {
-    const pb = this._overlay.position().global();
-    return pb.centerVertically().centerHorizontally();
+  private _getPositionStrategy(options: IUniDialogOptions) {
+    const pb = this._overlay.position()
+                            .global()
+                            .centerVertically()
+                            .centerHorizontally();
+
+    if (options.top) {
+      return pb.top(options.top);
+    }
+
+    return pb;
   }
 }

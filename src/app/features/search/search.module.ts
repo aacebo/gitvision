@@ -1,13 +1,20 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UniDialogModule, UniFormFieldModule, UniInputModule, UniIconModule } from 'uniform';
+
+import {
+  UniDialogModule,
+  UniFormFieldModule,
+  UniInputModule,
+  UniIconModule,
+} from 'uniform';
 
 import * as components from './components';
 
 const declarations = [
   components.SearchInputComponent,
   components.SearchDialogComponent,
+  components.SearchItemCardComponent,
 ];
 
 @NgModule({

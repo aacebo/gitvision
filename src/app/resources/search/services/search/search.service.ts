@@ -17,7 +17,7 @@ export class SearchService {
   readonly user$: Observable<ISearch<ISearchUser> | undefined>;
   readonly repository$: Observable<ISearch<ISearchRepository> | undefined>;
   readonly total$: Observable<number>;
-  readonly results$: Observable<(ISearchUser | ISearchRepository)[]>;
+  readonly results$: Observable<{ value: (ISearchUser | ISearchRepository); type: SearchType }[]>;
 
   constructor(private readonly _store$: Store<ISearchState>) {
     this.state$ = this._store$.pipe(select(selectors.selectState));

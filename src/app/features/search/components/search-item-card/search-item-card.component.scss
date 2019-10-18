@@ -1,0 +1,33 @@
+@import '../../../../../styles/colors';
+
+:host {
+  display: flex;
+  background-color: $dark-grey;
+  margin: 10px 0;
+  padding: 5px 20px;
+  box-shadow: 12px 0 0 -8px var(--primary) inset;
+  border-radius: 2px;
+  cursor: pointer;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-in-out;
+
+  &:hover {
+    filter: brightness(1.5);
+  }
+
+  uni-icon {
+    margin: auto 15px auto 0;
+  }
+
+  .search-item-card--description {
+    flex: 1 1 auto;
+
+    .search-item-card--title {
+      font-size: 1.2em;
+    }
+
+    .muted {
+      font-size: 0.8em;
+    }
+  }
+}

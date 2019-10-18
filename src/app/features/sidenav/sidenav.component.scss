@@ -20,7 +20,6 @@ $border-width: -8px;
         padding: 5px 10px;
         opacity: 0.5;
         outline: none;
-        box-shadow: 12px 0 0 $border-width rgba(0, 0, 0, 0) inset;
         transition: 0.2s ease-in-out;
 
         &.route--active {

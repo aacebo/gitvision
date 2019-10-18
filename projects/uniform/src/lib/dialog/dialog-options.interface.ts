@@ -8,6 +8,7 @@ export interface IUniDialogOptions<T = any> {
   minHeight?: string | number;
   maxWidth?: string | number;
   maxHeight?: string | number;
+  top?: string;
   disableClose?: boolean;
   hasBackdrop?: boolean;
   disposeOnNavigation?: boolean;

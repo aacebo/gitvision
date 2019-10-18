@@ -18,3 +18,11 @@
 
   <uni-icon icon="fa-search"></uni-icon>
 </uni-form-field>
+
+<div class="results">
+  <app-search-item-card
+    *ngFor="let item of search.results$ | async"
+    [value]="item.value"
+    [type]="item.type"
+  ></app-search-item-card>
+</div>

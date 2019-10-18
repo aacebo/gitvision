@@ -1,6 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { ISearchState } from './search.state';
+import { SearchType } from './enums';
 
 export const selectState = createFeatureSelector<ISearchState>('search');
 export const selectText = createSelector(selectState, state => state.text);
@@ -14,7 +15,16 @@ export const selectTotal = createSelector(selectState, state => {
 });
 
 export const selectResults = createSelector(selectState, state => {
-  const user = state.user ? state.user.items : [];
-  const repository = state.repository ? state.repository.items : [];
-  return [...user, ...repository].sort((a, b) => a.score - b.score);
+  const user = state.user ? state.user.items.map(v => ({
+    value: v,
+    type: SearchType.User,
+  })) : [];
+
+  const repository = state.repository ? state.repository.items.map(v => ({
+    value: v,
+    type: SearchType.Repository,
+  })) : [];
+
+  return [...user, ...repository].sort((a, b) => a.value.score - b.value.score)
+                                 .slice(0, 8);
 });

@@ -19,6 +19,7 @@ export class SearchInputComponent {
   onClick() {
     this._dialog.open(SearchDialogComponent, {
       panelClass: 'uni-dialog-transparent-panel',
+      top: '50px',
     });
   }
 
