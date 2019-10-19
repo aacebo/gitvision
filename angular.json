@@ -134,7 +134,7 @@
       "prefix": "uni",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass",
+          "style": "scss",
           "changeDetection": "OnPush"
         }
       },

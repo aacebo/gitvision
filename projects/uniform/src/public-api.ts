@@ -26,3 +26,4 @@ export * from './lib/button';
 export * from './lib/card';
 export * from './lib/tab';
 export * from './lib/progress';
+export * from './lib/pill';
