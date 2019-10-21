@@ -11,6 +11,7 @@ import { UniIconModule, UniIconService } from 'uniform';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ResourcesModule } from './resources';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -28,6 +29,7 @@ import { AppComponent } from './app.component';
 
     UniIconModule,
     AppRoutingModule,
+    ResourcesModule,
   ],
 })
 export class AppModule {
