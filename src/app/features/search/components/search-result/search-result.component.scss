@@ -1,0 +1,115 @@
+@import '../../../../../../projects/uniform/src/lib/core/styles/animations';
+@import '../../../../../styles/colors';
+
+$max-width: 500px;
+
+:host {
+  display: flex;
+  padding: 10px 15px;
+  margin: 10px 5px;
+  border-radius: 4px;
+  background-color: $dark-grey;
+  box-shadow: 12px 0 0 -8px var(--primary) inset;
+  transition-duration: $uni-animation-duration;
+  transition-timing-function: $uni-animation-timing-function;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+
+  &.success {
+    box-shadow: 12px 0 0 -8px $green inset;
+
+    .search-result--score-star {
+      uni-icon {
+        color: $green;
+      }
+    }
+  }
+
+  &.warning {
+    box-shadow: 12px 0 0 -8px $yellow inset;
+
+    .search-result--score-star {
+      uni-icon {
+        color: $yellow;
+      }
+    }
+  }
+
+  &.danger {
+    box-shadow: 12px 0 0 -8px $red inset;
+
+    .search-result--score-star {
+      uni-icon {
+        color: $red;
+      }
+
+      .search-result--score-score {
+        color: var(--white) !important;
+      }
+    }
+  }
+
+  .search-result--description {
+    flex: 1 1 auto;
+
+    .search-result--title {
+      font-size: 15pt;
+      max-width: $max-width;
+
+      .muted {
+        font-size: 11pt;
+      }
+    }
+
+    .search-result--subtitle {
+      font-size: 11pt;
+      max-width: $max-width;
+    }
+
+    .search-result--keywords {
+      font-size: 9pt;
+      opacity: 0.8;
+      max-width: $max-width;
+
+      uni-icon {
+        font-size: 9pt;
+        margin-right: 5px;
+      }
+    }
+
+    .search-result--update {
+      font-size: 10pt;
+      max-width: $max-width;
+
+      ::ng-deep a {
+        color: inherit;
+        font-weight: 600;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .search-result--score {
+    margin: auto 0 auto 5px;
+
+    .search-result--score-star {
+      uni-icon {
+        font-size: 25pt;
+      }
+
+      .search-result--score-score {
+        position: absolute;
+        width: 17px;
+        text-align: center;
+        font-size: 10pt;
+        margin-left: -25px;
+        margin-top: 15px;
+        color: var(--black);
+      }
+    }
+  }
+}

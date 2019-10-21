@@ -1,0 +1,39 @@
+<div class="search-result--description">
+  <div class="search-result--title ellipsis">
+    {{ value.package.name }}
+
+    <span class="muted">
+      ({{ value.package.version }})
+    </span>
+  </div>
+
+  <div class="search-result--subtitle ellipsis">
+    {{ value.package.description }}
+  </div>
+
+  <div
+    *ngIf="value.package.keywords"
+    class="search-result--keywords ellipsis"
+  >
+    <uni-icon icon="fa-tags"></uni-icon>
+    <span
+      *ngFor="let keyword of value.package.keywords; index as i"
+    >{{ keyword }}{{ (i < value.package.keywords.length - 1) ? ', ' : '' }}</span>
+  </div>
+
+  <div
+    class="search-result--update ellipsis"
+    [innerHTML]="value.package | searchLastUpdated"
+  >
+  </div>
+</div>
+
+<div class="search-result--score">
+  <div class="search-result--score-star">
+    <uni-icon icon="fa-certificate"></uni-icon>
+
+    <span class="search-result--score-score">
+      {{ value.score.final | searchScore }}
+    </span>
+  </div>
+</div>

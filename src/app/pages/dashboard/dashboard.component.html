@@ -1,3 +1,17 @@
 <div class="center">
-  <app-search></app-search>
+  <app-search
+    [query]="search.query$ | async"
+    (changed)="onSearch($event)"
+  ></app-search>
+
+  <app-search-result
+    *ngFor="let result of (search.results$ | async)?.results"
+    [value]="result"
+    [routerLink]="'/package/' + result.package.name"
+  ></app-search-result>
+
+  <div
+    class="show-more--button"
+    *ngIf="(search.results$ | async)?.total > 5"
+  >Show More...</div>
 </div>

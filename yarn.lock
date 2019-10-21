@@ -897,6 +897,20 @@
     tree-kill "1.2.1"
     webpack-sources "1.4.3"
 
+"@ngx-progressbar/core@^5.3.2":
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/@ngx-progressbar/core/-/core-5.3.2.tgz#d2e76034324d459dbbd7b9d89aa3b550db5e46f6"
+  integrity sha512-z0VzsJpgWxoU7wLXviCutXPXDop1Ry/SPOlVOtXHlkUGFAzHs3soDeXpTyigSdBB8Q16Nisow4EVuOKCByp6PQ==
+  dependencies:
+    tslib "^1.9.0"
+
+"@ngx-progressbar/http@^5.3.2":
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/@ngx-progressbar/http/-/http-5.3.2.tgz#8c61245390fe9b5c0935d665c7f2920f07977c1b"
+  integrity sha512-QijNeXRw1bLdYQ3yU4UJnoWV/aMM3FWOq0FYVVjazMoXfirz3OgaI298TuBRKsA0OGYXSZ3p2VTiEKb/bIYf4g==
+  dependencies:
+    tslib "^1.9.0"
+
 "@schematics/angular@8.3.9":
   version "8.3.9"
   resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-8.3.9.tgz#e088ddabc0899543810c010e7b5ccf7849d13d77"
@@ -3090,6 +3104,11 @@ dashdash@^1.12.0:
   integrity sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA=
   dependencies:
     assert-plus "^1.0.0"
+
+date-fns@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.5.1.tgz#6bd76f01d3a438e9c481d4c18512ddac37585b4c"
+  integrity sha512-ZBrQmuaqH9YqIejbgu8f09ki7wdD2JxWsRTZ/+HnnLNmkI56ty0evnWzKY+ihLT0xX5VdUX0vDNZCxJJGKX2+Q==
 
 date-format@^2.0.0:
   version "2.1.0"

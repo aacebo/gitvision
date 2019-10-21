@@ -1,9 +1,9 @@
-import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil, startWith, debounceTime, tap } from 'rxjs/operators';
 
-import { SearchService } from '../../../../resources/search';
+import { ISearchQuery } from '../../../../resources/search';
 
 @Component({
   selector: 'app-search',
@@ -12,21 +12,26 @@ import { SearchService } from '../../../../resources/search';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchComponent implements OnInit, OnDestroy {
+  @Input() query?: ISearchQuery;
+  @Output() changed = new EventEmitter<ISearchQuery>();
+
   readonly control = new FormControl();
 
   private readonly _destroy = new Subject<void>();
 
-  constructor(private readonly search: SearchService) { }
-
   ngOnInit() {
+    if (this.query) {
+      this.control.setValue(this.query.q);
+    }
+
     this.control.valueChanges.pipe(
       startWith(''),
       debounceTime(500),
       tap(v => {
         if (v) {
-          this.search.search({
+          this.changed.emit({
             q: v,
-            size: 10,
+            size: 5,
           });
         }
       }),

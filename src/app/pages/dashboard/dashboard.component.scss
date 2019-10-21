@@ -1,3 +1,11 @@
 :host {
   display: block;
+  height: 100%;
+
+  .show-more--button {
+    float: right;
+    color: var(--primary);
+    text-decoration: none;
+    cursor: pointer;
+  }
 }

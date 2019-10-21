@@ -5,9 +5,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UniFormFieldModule, UniInputModule, UniIconModule } from 'uniform';
 
 import * as components from './components';
+import * as pipes from './pipes';
 
 const declarations = [
   components.SearchComponent,
+  components.SearchResultComponent,
+  pipes.SearchLastUpdatedPipe,
+  pipes.SearchScorePipe,
 ];
 
 @NgModule({
