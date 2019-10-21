@@ -4,7 +4,9 @@ import { UNI_HOST_COLORS } from '../core/constants';
 import { UniColor } from '../core/enums';
 
 @Component({
+  moduleId: module.id,
   selector: 'uni-pill',
+  exportAs: 'uniPill',
   templateUrl: './pill.component.html',
   styleUrls: ['./pill.component.scss'],
   host: {

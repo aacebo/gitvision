@@ -1,5 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,10 +6,4 @@ import { Location } from '@angular/common';
   styleUrls: ['./dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardComponent implements OnInit {
-  constructor(private readonly _location: Location) { }
-
-  ngOnInit() {
-    this._location.replaceState('/dashboard');
-  }
-}
+export class DashboardComponent { }

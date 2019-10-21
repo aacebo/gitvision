@@ -5,6 +5,7 @@ import { UniPillComponent } from './pill.component';
 
 @NgModule({
   declarations: [UniPillComponent],
+  exports: [UniPillComponent],
   imports: [CommonModule],
 })
 export class UniPillModule { }
