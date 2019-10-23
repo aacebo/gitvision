@@ -1,7 +1,20 @@
-import { Component, ChangeDetectionStrategy, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  OnInit,
+  OnDestroy,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+  AfterViewInit,
+} from '@angular/core';
+
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil, startWith, debounceTime, tap } from 'rxjs/operators';
+
+import { UniInputComponent } from 'uniform';
 
 import { ISearchQuery } from '../../../../resources/search';
 
@@ -11,12 +24,15 @@ import { ISearchQuery } from '../../../../resources/search';
   styleUrls: ['./search-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchInputComponent implements OnInit, OnDestroy {
+export class SearchInputComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() query?: ISearchQuery;
   @Input() size: number;
 
   @Output() changed = new EventEmitter<ISearchQuery>();
   @Output() search = new EventEmitter<ISearchQuery>();
+
+  @ViewChild(UniInputComponent, { static: false })
+  readonly input: UniInputComponent;
 
   readonly control = new FormControl();
 
@@ -40,6 +56,10 @@ export class SearchInputComponent implements OnInit, OnDestroy {
       }),
       takeUntil(this._destroy),
     ).subscribe();
+  }
+
+  ngAfterViewInit() {
+    this.input.focus();
   }
 
   ngOnDestroy() {

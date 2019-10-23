@@ -10,7 +10,9 @@ export class SearchResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot) {
     if (route.queryParams && route.queryParamMap.has('q')) {
       this._search.search({
-        ...route.queryParams as any,
+        // ...route.queryParams as any,
+        q: route.queryParamMap.get('q'),
+        size: +route.queryParamMap.get('size'),
       });
     }
   }

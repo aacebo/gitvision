@@ -7,7 +7,14 @@
   ></app-search-input>
 </uni-toolbar>
 
-<div class="search--results">
+<div
+  class="search--results"
+  [appIScrollSize]="(search.query$ | async)?.size"
+  [appIScrollTotal]="(search.results$ | async)?.total"
+  [appIScrollCount]="(search.results$ | async)?.results.length"
+  [appIScrollQuery]="(search.query$ | async)?.q"
+  (appIScroll)="onIScroll($event)"
+>
   <app-search-result
     *ngFor="let result of (search.results$ | async)?.results"
     [value]="result"

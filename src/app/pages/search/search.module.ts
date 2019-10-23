@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UniToolbarModule } from 'uniform';
 
 import { SearchModule as SearchFeatureModule } from '../../features/search';
+import { IScrollModule } from '../../features/i-scroll';
 
 import { SearchComponent } from './search.component';
 import { SearchRoutingModule } from './search-routing.module';
@@ -14,8 +15,9 @@ import { SearchRoutingModule } from './search-routing.module';
   imports: [
     CommonModule,
     UniToolbarModule,
-    SearchRoutingModule,
+    IScrollModule,
     SearchFeatureModule,
+    SearchRoutingModule,
   ],
 })
 export class SearchModule { }

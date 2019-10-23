@@ -20,4 +20,9 @@ export class SearchComponent {
     this.search.search(e);
     this._location.replaceState(`/?${qs.stringify(e)}`);
   }
+
+  onIScroll(e: ISearchQuery) {
+    this.search.search(e);
+    this._location.replaceState(`/?${qs.stringify(e)}`);
+  }
 }
