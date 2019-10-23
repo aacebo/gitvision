@@ -16,4 +16,16 @@
     text-align: center;
     margin: 215px 20px;
   }
+
+  .center {
+    app-search-input {
+      ::ng-deep uni-form-field {
+        uni-icon {
+          margin-left: 0;
+          position: absolute;
+          right: 20px;
+        }
+      }
+    }
+  }
 }

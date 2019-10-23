@@ -1,8 +1,10 @@
 export interface IPackageMetadata {
   readonly date: Date;
   readonly dependencies: any;
+  readonly devDependencies: any;
   readonly description: string;
   readonly hasSelectiveFiles: boolean;
+  readonly hasTestScript: boolean;
   readonly keywords: string[];
   readonly license: string;
   readonly links: {
@@ -16,6 +18,10 @@ export interface IPackageMetadata {
     readonly username: string;
   }[];
   readonly name: string;
+  readonly author: {
+    readonly name: string;
+    readonly email: string;
+  };
   readonly publisher: {
     readonly email: string;
     readonly username: string;
@@ -32,4 +38,5 @@ export interface IPackageMetadata {
   };
   readonly scope: string;
   readonly version: string;
+  readonly readme: string;
 }
