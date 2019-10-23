@@ -6,6 +6,14 @@
     float: right;
     color: var(--primary);
     text-decoration: none;
-    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .progress {
+    text-align: center;
+    margin: 215px 20px;
   }
 }

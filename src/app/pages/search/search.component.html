@@ -1,0 +1,15 @@
+<uni-toolbar>
+  <app-search-input
+    [query]="search.query$ | async"
+    [size]="20"
+    (changed)="onChanged($event)"
+    (search)="onChanged($event)"
+  ></app-search-input>
+</uni-toolbar>
+
+<div class="search--results">
+  <app-search-result
+    *ngFor="let result of (search.results$ | async)?.results"
+    [value]="result"
+  ></app-search-result>
+</div>

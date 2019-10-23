@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, OnInit } from '@angular/core';
+import * as qs from 'qs';
 
 import { ISearchResult } from '../../../../resources/search';
 
@@ -13,6 +14,12 @@ import { ISearchResult } from '../../../../resources/search';
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchResultComponent {
+export class SearchResultComponent implements OnInit {
   @Input() value: ISearchResult;
+
+  urlFriendlyName: string;
+
+  ngOnInit() {
+    this.urlFriendlyName = qs.stringify({ name: this.value.package.name }).replace('name=', '');
+  }
 }

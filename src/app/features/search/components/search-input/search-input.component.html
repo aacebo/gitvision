@@ -5,6 +5,7 @@
     spellcheck="false"
     placeholder="Search a package!"
     [formControl]="control"
+    (keydown.enter)="onEnter()"
   />
 
   <uni-icon icon="fa-search"></uni-icon>

@@ -1,11 +1,14 @@
 <div class="search-result--description">
-  <div class="search-result--title ellipsis">
+  <a
+    class="search-result--title ellipsis"
+    [routerLink]="['/package/', urlFriendlyName]"
+  >
     {{ value.package.name }}
 
     <span class="muted">
       ({{ value.package.version }})
     </span>
-  </div>
+  </a>
 
   <div class="search-result--subtitle ellipsis">
     {{ value.package.description }}
@@ -16,9 +19,13 @@
     class="search-result--keywords ellipsis"
   >
     <uni-icon icon="fa-tags"></uni-icon>
-    <span
+    <a
       *ngFor="let keyword of value.package.keywords; index as i"
-    >{{ keyword }}{{ (i < value.package.keywords.length - 1) ? ', ' : '' }}</span>
+      [routerLink]="['/search']"
+      [queryParams]="{ q: ('keywords:' + keyword), size: 20 }"
+    >
+      {{ keyword }}{{ (i < value.package.keywords.length - 1) ? ', ' : '' }}
+    </a>
   </div>
 
   <div

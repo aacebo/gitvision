@@ -10,10 +10,14 @@ const routes: Routes = [
     path: 'package',
     loadChildren: () => import('./pages/package/package.module').then(m => m.PackageModule),
   },
+  {
+    path: 'search',
+    loadChildren: () => import('./pages/search/search.module').then(m => m.SearchModule),
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'corrected' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule { }

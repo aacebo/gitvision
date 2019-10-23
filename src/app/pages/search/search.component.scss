@@ -1,0 +1,36 @@
+@import '../../../styles/colors';
+
+$toolbar-height: 73px;
+
+:host {
+  display: block;
+  height: 100%;
+
+  uni-toolbar {
+    z-index: 10;
+    position: fixed;
+    background-color: $black;
+    top: 0;
+    width: 100%;
+
+    app-search-input {
+      width: 50%;
+
+      ::ng-deep uni-form-field {
+        input {
+          font-size: 15pt;
+          min-width: initial;
+        }
+
+        uni-icon {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .search--results {
+    padding: $toolbar-height 10px 0 10px;
+    overflow-y: auto;
+  }
+}

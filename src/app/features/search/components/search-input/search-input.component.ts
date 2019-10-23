@@ -6,14 +6,17 @@ import { takeUntil, startWith, debounceTime, tap } from 'rxjs/operators';
 import { ISearchQuery } from '../../../../resources/search';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
+  selector: 'app-search-input',
+  templateUrl: './search-input.component.html',
+  styleUrls: ['./search-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchComponent implements OnInit, OnDestroy {
+export class SearchInputComponent implements OnInit, OnDestroy {
   @Input() query?: ISearchQuery;
+  @Input() size: number;
+
   @Output() changed = new EventEmitter<ISearchQuery>();
+  @Output() search = new EventEmitter<ISearchQuery>();
 
   readonly control = new FormControl();
 
@@ -31,7 +34,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         if (v) {
           this.changed.emit({
             q: v,
-            size: 5,
+            size: this.size,
           });
         }
       }),
@@ -42,5 +45,12 @@ export class SearchComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this._destroy.next();
     this._destroy.complete();
+  }
+
+  onEnter() {
+    this.search.emit({
+      q: this.control.value,
+      size: 20,
+    });
   }
 }

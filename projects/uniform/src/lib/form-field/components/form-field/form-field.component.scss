@@ -2,6 +2,6 @@
 @import '../../../core/styles/border-radius';
 
 :host {
-  display: inline-block;
+  display: flex;
   border-radius: $uni-border-radius-sm;
 }
