@@ -15,15 +15,16 @@ $toolbar-height: 73px;
 
     app-search-input {
       width: 50%;
+      max-width: 500px;
 
       ::ng-deep uni-form-field {
         input {
-          font-size: 15pt;
+          font-size: 11pt;
           min-width: initial;
         }
 
         uni-icon {
-          font-size: 18px;
+          font-size: 13px;
         }
       }
     }
