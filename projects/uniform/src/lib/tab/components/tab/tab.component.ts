@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input, ContentChild } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 import { UniTabLabelComponent } from '../tab-label/tab-label.component';
 
@@ -10,7 +11,7 @@ import { UniTabLabelComponent } from '../tab-label/tab-label.component';
   styleUrls: ['./tab.component.scss'],
   host: {
     class: 'uni-tab',
-    '[class.active]': 'active',
+    '[class.active]': 'active$.value',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -19,5 +20,5 @@ export class UniTabComponent {
 
   @ContentChild(UniTabLabelComponent, { static: true }) uniLabel?: UniTabLabelComponent;
 
-  active = false;
+  readonly active$ = new BehaviorSubject(false);
 }

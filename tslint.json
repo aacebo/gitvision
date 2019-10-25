@@ -84,6 +84,7 @@
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
+    "no-string-literal": false,
     "interface-name": [true, "always-prefix"],
     "variable-name": {
       "options": [

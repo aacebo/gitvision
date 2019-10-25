@@ -91,13 +91,20 @@ $max-width: 500px;
     }
 
     .search-result--update {
+      display: flex;
       font-size: 10pt;
       max-width: $max-width;
 
       ::ng-deep a {
+        display: flex;
         color: inherit;
         font-weight: 600;
         letter-spacing: 1px;
+
+        img {
+          margin-left: 5px;
+          margin-right: 5px;
+        }
       }
     }
   }

@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import * as md5 from 'md5';
 import {
   differenceInYears,
   differenceInMonths,
@@ -42,7 +43,15 @@ export class SearchLastUpdatedPipe implements PipeTransform {
       dateStr = 'now';
     }
 
-    return `Updated ${dateStr} by <a target="_blank" href="https://www.npmjs.com/~${pkg.publisher.username}">${pkg.publisher.username}</a>`;
+    const gravatar = md5(pkg.publisher.email.trim());
+
+    return `
+      Updated ${dateStr} by
+      <a target="_blank" href="https://www.npmjs.com/~${pkg.publisher.username}">
+        <img class="avatar round" src="https://s.gravatar.com/avatar/${gravatar}?size=20&default=retro" />
+        ${pkg.publisher.username}
+      </a>
+    `;
   }
 
   private getPlural(v: number) {

@@ -6,6 +6,9 @@ import { UniToolbarModule, UniTabModule } from 'uniform';
 import { PackageComponent } from './package.component';
 import { PackageRoutingModule } from './package-routing.module';
 
+import { RunkitModule } from '../../features/runkit';
+import { MarkdownModule } from '../../features/markdown';
+
 @NgModule({
   declarations: [PackageComponent],
   schemas: [NO_ERRORS_SCHEMA],
@@ -14,6 +17,9 @@ import { PackageRoutingModule } from './package-routing.module';
     UniToolbarModule,
     UniTabModule,
     PackageRoutingModule,
+
+    RunkitModule,
+    MarkdownModule,
   ],
 })
 export class PackageModule { }

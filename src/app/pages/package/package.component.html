@@ -1,6 +1,20 @@
-<uni-tab-group color="primary">
-  <uni-tab label="General"></uni-tab>
+<uni-tab-group
+  color="primary"
+  *ngIf="pkg.package$ | async; let pkg"
+>
+  <uni-tab label="General">
+  </uni-tab>
+  <uni-tab *ngIf="pkg.collected?.metadata?.readme" label="Readme">
+    <app-markdown
+      [markdown]="pkg.collected?.metadata?.readme"
+    ></app-markdown>
+  </uni-tab>
   <uni-tab label="Npm"></uni-tab>
   <uni-tab label="Github"></uni-tab>
-  <uni-tab label="Runkit"></uni-tab>
+  <uni-tab label="Runkit">
+    <app-runkit
+      title="test"
+      [source]="'const pkg = require(\'' + pkg.collected?.metadata?.name + '\');'"
+    ></app-runkit>
+  </uni-tab>
 </uni-tab-group>

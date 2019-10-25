@@ -31,10 +31,10 @@ export class UniTabGroupComponent implements AfterContentInit {
 
   private _setActive() {
     this.tabs.forEach((tab, i) => {
-      tab.active = false;
+      tab.active$.next(false);
 
       if (i === +this.active) {
-        tab.active = true;
+        tab.active$.next(true);
       }
     });
   }

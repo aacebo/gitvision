@@ -32,3 +32,11 @@ html, body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.avatar {
+  border-radius: 4px;
+
+  &.round {
+    border-radius: 100px;
+  }
+}
