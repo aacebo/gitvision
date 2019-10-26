@@ -1,0 +1,8 @@
+:host {
+  display: block;
+  height: 100%;
+
+  ::ng-deep .uni-tab {
+    padding: 10px;
+  }
+}

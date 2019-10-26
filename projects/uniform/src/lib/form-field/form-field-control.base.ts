@@ -4,7 +4,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 import { UniFormFieldComponent } from './components/form-field/form-field.component';
 
-export class UniFormFieldControlBase<T> implements ControlValueAccessor {
+export class UniFormFieldControlBase<T = any> implements ControlValueAccessor {
   get value() { return this._value; }
   set value(v: T) {
     this._value = v;
@@ -16,7 +16,10 @@ export class UniFormFieldControlBase<T> implements ControlValueAccessor {
   get tabIndex() { return this._tabIndex; }
   set tabIndex(v: number) {
     this._tabIndex = v;
-    this.el.nativeElement.tabIndex = this._tabIndex;
+
+    if (this.el && this.el.nativeElement) {
+      this.el.nativeElement.tabIndex = this._tabIndex;
+    }
   }
   private _tabIndex?: number;
 

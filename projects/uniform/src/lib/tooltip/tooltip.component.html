@@ -1,4 +1,4 @@
-<ng-container *ngTemplateOutlet="isString ? default : content"></ng-container>
+<ng-container *ngTemplateOutlet="template$ | async"></ng-container>
 
 <ng-template #default>
   {{ content }}

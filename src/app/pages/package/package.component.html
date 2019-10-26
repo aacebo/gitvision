@@ -2,8 +2,6 @@
   color="primary"
   *ngIf="pkg.package$ | async; let pkg"
 >
-  <uni-tab label="General">
-  </uni-tab>
   <uni-tab *ngIf="pkg.collected?.metadata?.readme" label="Readme">
     <app-markdown
       [markdown]="pkg.collected?.metadata?.readme"
