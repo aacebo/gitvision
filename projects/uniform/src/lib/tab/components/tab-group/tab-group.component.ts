@@ -1,4 +1,13 @@
-import { Component, ChangeDetectionStrategy, Input, ContentChildren, QueryList, AfterContentInit } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  ContentChildren,
+  QueryList,
+  AfterContentInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 import { UniTabComponent } from '../tab/tab.component';
 import { UniColor } from '../../../core/enums';
@@ -18,23 +27,26 @@ export class UniTabGroupComponent implements AfterContentInit {
   @Input() active = 0;
   @Input() color = UniColor.Secondary;
 
+  @Output() selected = new EventEmitter<number>();
+
   @ContentChildren(UniTabComponent) tabs: QueryList<UniTabComponent>;
 
   ngAfterContentInit() {
     this._setActive();
   }
 
-  select(index: number) {
-    this.active = index;
+  select(i: number) {
+    this.active = i;
+    this.selected.emit(i);
     this._setActive();
   }
 
   private _setActive() {
     this.tabs.forEach((tab, i) => {
-      tab.active$.next(false);
+      tab.active = false;
 
       if (i === +this.active) {
-        tab.active$.next(true);
+        tab.active = true;
       }
     });
   }

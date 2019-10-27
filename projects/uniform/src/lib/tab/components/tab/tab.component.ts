@@ -1,5 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, ContentChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, ChangeDetectionStrategy, Input, ContentChild, Output, EventEmitter } from '@angular/core';
 
 import { UniTabLabelComponent } from '../tab-label/tab-label.component';
 
@@ -11,20 +10,25 @@ import { UniTabLabelComponent } from '../tab-label/tab-label.component';
   styleUrls: ['./tab.component.scss'],
   host: {
     class: 'uni-tab',
-    '[class.active]': 'active$.value',
+    '[class.active]': 'active',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UniTabComponent implements AfterViewInit {
+export class UniTabComponent {
   @Input() label?: string;
 
+  @Input()
+  get active() { return this._active; }
+  set active(v: boolean) {
+    this._active = v;
+
+    if (v) {
+      this.selected.emit();
+    }
+  }
+
+  @Output() selected = new EventEmitter<void>();
   @ContentChild(UniTabLabelComponent, { static: true }) uniLabel?: UniTabLabelComponent;
 
-  readonly active$ = new BehaviorSubject(false);
-
-  constructor(private readonly _cdr: ChangeDetectorRef) { }
-
-  ngAfterViewInit() {
-    this._cdr.markForCheck();
-  }
+  private _active = false;
 }
