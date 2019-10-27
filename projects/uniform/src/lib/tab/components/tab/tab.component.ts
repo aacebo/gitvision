@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, ContentChild, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, ContentChild, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 
 import { UniTabLabelComponent } from '../tab-label/tab-label.component';
 
@@ -24,6 +24,7 @@ export class UniTabComponent {
 
     if (v) {
       this.selected.emit();
+      this._cdr.markForCheck();
     }
   }
 
@@ -31,4 +32,6 @@ export class UniTabComponent {
   @ContentChild(UniTabLabelComponent, { static: true }) uniLabel?: UniTabLabelComponent;
 
   private _active = false;
+
+  constructor(private readonly _cdr: ChangeDetectorRef) { }
 }
