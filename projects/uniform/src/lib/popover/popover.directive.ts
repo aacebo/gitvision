@@ -1,6 +1,7 @@
 import { Directive, OnInit, Input, ElementRef, TemplateRef, HostListener } from '@angular/core';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 import { getUniPosition, UniPosition } from '../core/position';
 import { UniPopoverComponent } from './popover.component';
@@ -21,10 +22,15 @@ export class UniPopoverDirective implements OnInit {
   @Input('uniPopoverPosition') position = UniPosition.Top;
   @Input('uniPopoverTrigger') trigger = UniPopoverTrigger.Click;
   @Input('uniPopoverPanelClass') panelClass?: string;
-  @Input('uniPopoverHasBackdrop') hasBackdrop = true;
   @Input('uniPopoverBackdropClass') backdropClass = 'cdk-overlay-transparent-backdrop';
   @Input('uniPopoverOrigin') origin: HTMLElement;
+  @Input('uniPopoverHasBackdrop')
+  get hasBackdrop() { return this._hasBackdrop; }
+  set hasBackdrop(v: boolean) {
+    this._hasBackdrop = coerceBooleanProperty(v);
+  }
 
+  private _hasBackdrop = true;
   private _overlayRef: OverlayRef;
 
   private get _vertical() {
@@ -68,13 +74,20 @@ export class UniPopoverDirective implements OnInit {
   }
 
   onMouseEnter() {
-    if (this.trigger === UniPopoverTrigger.Hover) {
+    if (
+      this.trigger === UniPopoverTrigger.Hover &&
+      !this.disabled &&
+      !this._overlayRef.hasAttached()
+    ) {
       this.show();
     }
   }
 
   onMouseLeave() {
-    if (this.trigger === UniPopoverTrigger.Hover) {
+    if (
+      this.trigger === UniPopoverTrigger.Hover &&
+      this._overlayRef.hasAttached()
+    ) {
       this.hide();
     }
   }

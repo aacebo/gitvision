@@ -25,17 +25,19 @@
     }
   }
 
-  uni-icon {
-    font-size: 25pt;
-  }
+  .score-icon--container {
+    uni-icon {
+      font-size: 25pt;
+    }
 
-  .score-icon--score {
-    position: absolute;
-    width: 17px;
-    text-align: center;
-    font-size: 10pt;
-    margin-left: -25px;
-    margin-top: 15px;
-    color: var(--black);
+    .score-icon--score {
+      position: absolute;
+      width: 17px;
+      text-align: center;
+      font-size: 10pt;
+      margin-left: -25px;
+      margin-top: 15px;
+      color: var(--black);
+    }
   }
 }

@@ -13,4 +13,4 @@ import { UNI_POSITIONS, UniPositionBase } from '../core/position';
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UniPopoverComponent extends UniPositionBase {}
+export class UniPopoverComponent extends UniPositionBase { }

@@ -1,5 +1,15 @@
-<uni-icon icon="fa-certificate"></uni-icon>
+<div
+  class="score-icon--container"
+  uniPopover="test"
+  uniPopoverPosition="bottom left"
+  uniPopoverTrigger="hover"
+  uniPopoverHasBackdrop="false"
+>
+  <uni-icon
+    icon="fa-certificate"
+  ></uni-icon>
 
-<span class="score-icon--score">
-  {{ score.final | score }}
-</span>
+  <span class="score-icon--score">
+    {{ score.final | score }}
+  </span>
+</div>
