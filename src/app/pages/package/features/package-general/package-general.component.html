@@ -3,7 +3,76 @@
     <uni-grid-column>
       <uni-card>
         <uni-card-content>
-          {{ package.collected.metadata.name }}
+          <uni-grid>
+            <uni-grid-row>
+              <uni-grid-column>
+                <app-field
+                  label="VERSION"
+                  [value]="package.collected.metadata.version"
+                ></app-field>
+              </uni-grid-column>
+
+              <uni-grid-column>
+                <app-field
+                  label="LICENSE"
+                  [value]="package.collected.metadata.license"
+                ></app-field>
+              </uni-grid-column>
+            </uni-grid-row>
+
+            <uni-grid-row>
+              <uni-grid-column>
+                <app-field
+                  label="HOME"
+                  [value]="package.collected.metadata.links.homepage"
+                  link
+                ></app-field>
+              </uni-grid-column>
+
+              <uni-grid-column>
+                <app-field
+                  label="NPM"
+                  [value]="package.collected.metadata.links.npm"
+                  link
+                ></app-field>
+              </uni-grid-column>
+            </uni-grid-row>
+
+            <uni-grid-row>
+              <uni-grid-column>
+                <app-field
+                  label="REPOSITORY"
+                  [value]="package.collected.metadata.links.repository"
+                  link
+                ></app-field>
+              </uni-grid-column>
+
+              <uni-grid-column>
+                <app-field
+                  label="ISSUES"
+                  [value]="package.collected.metadata.links.bugs"
+                  link
+                ></app-field>
+              </uni-grid-column>
+            </uni-grid-row>
+
+            <uni-grid-row>
+              <uni-grid-column>
+                <app-field
+                  label="RUNKIT"
+                  [value]="'https://runkit.com/npm/' + package.collected.metadata.name"
+                  link
+                ></app-field>
+              </uni-grid-column>
+
+              <uni-grid-column>
+                <app-field
+                  label="DESCRIPTION"
+                  [value]="package.collected.metadata.description"
+                ></app-field>
+              </uni-grid-column>
+            </uni-grid-row>
+          </uni-grid>
         </uni-card-content>
       </uni-card>
     </uni-grid-column>

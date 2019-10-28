@@ -1,0 +1,40 @@
+:host {
+  display: flex;
+  margin: 5px;
+
+  &:hover {
+    uni-icon {
+      display: block;
+    }
+  }
+
+  .field--description {
+    flex: 1 1 auto;
+
+    .field--label {
+      opacity: 0.8;
+      font-size: 11pt;
+      font-weight: 600;
+    }
+
+    .field--value {
+      font-weight: 600;
+      display: inline;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  uni-icon {
+    display: none;
+    margin: auto 10px;
+    color: var(--white-a30);
+  }
+}

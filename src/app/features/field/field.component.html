@@ -1,0 +1,22 @@
+<div class="field--description ellipsis">
+  <div class="field--label">
+    {{ label }}
+  </div>
+
+  <div *ngIf="!link" class="field--value">
+    {{ value }}
+  </div>
+
+  <a
+    *ngIf="link"
+    class="field--value"
+    target="_blank"
+    [href]="value"
+  >{{ value }}</a>
+</div>
+
+<uni-icon
+  *ngIf="!link"
+  prefix="far"
+  icon="fa-copy"
+></uni-icon>
