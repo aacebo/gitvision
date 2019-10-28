@@ -5,14 +5,13 @@ import { RouterModule } from '@angular/router';
 
 import { UniFormFieldModule, UniInputModule, UniIconModule } from 'uniform';
 
+import { LastPublishedModule } from '../last-published';
+import { ScoreModule } from '../score';
 import * as components from './components';
-import * as pipes from './pipes';
 
 const declarations = [
   components.SearchInputComponent,
   components.SearchResultComponent,
-  pipes.SearchLastUpdatedPipe,
-  pipes.SearchScorePipe,
 ];
 
 @NgModule({
@@ -27,6 +26,9 @@ const declarations = [
     UniFormFieldModule,
     UniInputModule,
     UniIconModule,
+
+    LastPublishedModule,
+    ScoreModule,
   ],
 })
 export class SearchModule { }

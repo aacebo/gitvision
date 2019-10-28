@@ -30,17 +30,11 @@
 
   <div
     class="search-result--update ellipsis"
-    [innerHTML]="value.package | searchLastUpdated"
+    [innerHTML]="value.package | lastPublished"
   >
   </div>
 </div>
 
 <div class="search-result--score">
-  <div class="search-result--score-star">
-    <uni-icon icon="fa-certificate"></uni-icon>
-
-    <span class="search-result--score-score">
-      {{ value.score.final | searchScore }}
-    </span>
-  </div>
+  <app-score-icon [score]="value.score"></app-score-icon>
 </div>

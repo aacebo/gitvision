@@ -40,3 +40,11 @@ html, body {
     border-radius: 100px;
   }
 }
+
+.dot {
+  border-radius: 100px;
+  background-color: var(--white-a50);
+  width: 5px;
+  height: 5px;
+  margin: auto 10px;
+}

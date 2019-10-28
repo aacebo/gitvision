@@ -1,18 +1,49 @@
-<uni-tab-group
-  color="primary"
-  *ngIf="pkg.package$ | async; let pkg"
->
-  <uni-tab *ngIf="pkg.collected?.metadata?.readme" label="Readme">
-    <app-markdown
-      [markdown]="pkg.collected?.metadata?.readme"
-    ></app-markdown>
-  </uni-tab>
-  <uni-tab label="Npm"></uni-tab>
-  <uni-tab label="Github"></uni-tab>
-  <uni-tab label="Runkit">
-    <app-runkit
-      title="test"
-      [source]="'const pkg = require(\'' + pkg.collected?.metadata?.name + '\');'"
-    ></app-runkit>
-  </uni-tab>
-</uni-tab-group>
+<ng-container *ngIf="pkg.package$ | async; let pkg">
+  <div class="package-header">
+    <div class="package-header--description">
+      <div class="package-header--title">
+        {{ pkg.collected?.metadata?.name }}
+      </div>
+
+      <div class="package-header--subtitle">
+        <div class="package-header--subtitle-item">
+          {{ pkg.collected?.metadata?.version }}
+        </div>
+
+        <div class="dot"></div>
+
+        <div
+          class="package-header--subtitle-item"
+          [innerHTML]="pkg.collected?.metadata | lastPublished"
+        ></div>
+      </div>
+    </div>
+
+    <div class="package-header--score">
+      <app-score-icon [score]="pkg.score"></app-score-icon>
+    </div>
+  </div>
+
+  <uni-tab-group
+    color="primary"
+  >
+    <uni-tab label="General">
+      <app-package-general
+        [package]="pkg"
+      ></app-package-general>
+    </uni-tab>
+    <uni-tab *ngIf="pkg.collected?.metadata?.readme" label="Readme">
+      <app-markdown
+        [markdown]="pkg.collected?.metadata?.readme"
+      ></app-markdown>
+    </uni-tab>
+    <uni-tab label="Npm"></uni-tab>
+    <uni-tab label="Github"></uni-tab>
+    <uni-tab label="Runkit">
+      <app-runkit
+        title="test"
+        [source]="'const pkg = require(\'' + pkg.collected?.metadata?.name + '\');'"
+      ></app-runkit>
+    </uni-tab>
+  </uni-tab-group>
+</ng-container>

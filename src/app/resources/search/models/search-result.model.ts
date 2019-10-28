@@ -1,8 +1,8 @@
+import { IScore } from '../../models';
 import { ISearchPackage } from './search-package.model';
-import { ISearchScore } from './search-score.model';
 
 export interface ISearchResult {
   readonly package: ISearchPackage;
-  readonly score: ISearchScore;
+  readonly score: IScore;
   readonly searchScore: number;
 }

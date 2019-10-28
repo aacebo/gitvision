@@ -9,13 +9,14 @@ import {
   differenceInMinutes,
 } from 'date-fns';
 
-import { ISearchPackage } from '../../../../resources/search';
+import { ISearchPackage } from '../../resources/search';
+import { IPackageMetadata } from '../../resources/package';
 
 @Pipe({
-  name: 'searchLastUpdated',
+  name: 'lastPublished',
 })
-export class SearchLastUpdatedPipe implements PipeTransform {
-  transform(pkg: ISearchPackage) {
+export class LastPublishedPipe implements PipeTransform {
+  transform(pkg: ISearchPackage | IPackageMetadata) {
     const now = new Date();
     const date = new Date(pkg.date);
 
@@ -46,7 +47,7 @@ export class SearchLastUpdatedPipe implements PipeTransform {
     const gravatar = md5(pkg.publisher.email.trim());
 
     return `
-      Updated ${dateStr} by
+      Published ${dateStr} by
       <a target="_blank" href="https://www.npmjs.com/~${pkg.publisher.username}">
         <img class="avatar round" src="https://s.gravatar.com/avatar/${gravatar}?size=20&default=retro" />
         ${pkg.publisher.username}

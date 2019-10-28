@@ -1,4 +1,4 @@
-export interface ISearchScore {
+export interface IScore {
   readonly detail: {
     readonly maintenance: number;
     readonly popularity: number;

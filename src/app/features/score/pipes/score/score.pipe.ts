@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'searchScore',
+  name: 'score',
 })
-export class SearchScorePipe implements PipeTransform {
+export class ScorePipe implements PipeTransform {
   transform(score: number) {
     return Math.round(score * 100).toFixed();
   }

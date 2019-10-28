@@ -20,36 +20,14 @@ $max-width: 500px;
 
   &.success {
     box-shadow: 12px 0 0 -8px $green inset;
-
-    .search-result--score-star {
-      uni-icon {
-        color: $green;
-      }
-    }
   }
 
   &.warning {
     box-shadow: 12px 0 0 -8px $yellow inset;
-
-    .search-result--score-star {
-      uni-icon {
-        color: $yellow;
-      }
-    }
   }
 
   &.danger {
     box-shadow: 12px 0 0 -8px $red inset;
-
-    .search-result--score-star {
-      uni-icon {
-        color: $red;
-      }
-
-      .search-result--score-score {
-        color: var(--white) !important;
-      }
-    }
   }
 
   ::ng-deep a {
@@ -111,21 +89,5 @@ $max-width: 500px;
 
   .search-result--score {
     margin: auto 0 auto 5px;
-
-    .search-result--score-star {
-      uni-icon {
-        font-size: 25pt;
-      }
-
-      .search-result--score-score {
-        position: absolute;
-        width: 17px;
-        text-align: center;
-        font-size: 10pt;
-        margin-left: -25px;
-        margin-top: 15px;
-        color: var(--black);
-      }
-    }
   }
 }

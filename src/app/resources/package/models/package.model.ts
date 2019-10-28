@@ -1,3 +1,5 @@
+import { IScore } from '../../models';
+
 import { IPackageGithub } from './package-github.model';
 import { IPackageMetadata } from './package-metadata.model';
 import { IPackageNpm } from './package-npm.model';
@@ -31,12 +33,5 @@ export interface IPackage {
       readonly tests: number;
     };
   };
-  readonly score: {
-    readonly detail: {
-      readonly maintenance: number;
-      readonly popularity: number;
-      readonly quality: number;
-    };
-    readonly final: number;
-  };
+  readonly score: IScore;
 }

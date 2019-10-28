@@ -8,6 +8,10 @@ import { PackageRoutingModule } from './package-routing.module';
 
 import { RunkitModule } from '../../features/runkit';
 import { MarkdownModule } from '../../features/markdown';
+import { LastPublishedModule } from '../../features/last-published';
+import { ScoreModule } from '../../features/score';
+
+import { PackageGeneralModule } from './features/package-general';
 
 @NgModule({
   declarations: [PackageComponent],
@@ -23,6 +27,10 @@ import { MarkdownModule } from '../../features/markdown';
 
     RunkitModule,
     MarkdownModule,
+    LastPublishedModule,
+    ScoreModule,
+
+    PackageGeneralModule,
   ],
 })
 export class PackageModule { }

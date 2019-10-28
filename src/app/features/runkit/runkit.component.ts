@@ -13,7 +13,7 @@ export class RunkitComponent implements AfterViewInit {
   @Input() nodeVersion: string;
   @Input() env: string[] = [];
   @Input() title: string;
-  @Input() minHeight: string;
+  @Input() minHeight = '200px';
   @Input() packageTimestamp: string;
   @Input() preamble: string;
 
