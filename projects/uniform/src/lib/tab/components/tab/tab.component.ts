@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, ContentChild, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 
-import { UniTabLabelComponent } from '../tab-label/tab-label.component';
+import { UniTabLabelComponent } from '../tab-label';
 
 @Component({
   moduleId: module.id,

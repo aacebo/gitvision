@@ -9,7 +9,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 
-import { UniTabComponent } from '../tab/tab.component';
+import { UniTabComponent } from '../tab';
 import { UniColor } from '../../../core/enums';
 
 @Component({
@@ -29,7 +29,8 @@ export class UniTabGroupComponent implements AfterContentInit {
 
   @Output() selected = new EventEmitter<number>();
 
-  @ContentChildren(UniTabComponent) tabs: QueryList<UniTabComponent>;
+  @ContentChildren(UniTabComponent)
+  readonly tabs: QueryList<UniTabComponent>;
 
   ngAfterContentInit() {
     this._setActive();
