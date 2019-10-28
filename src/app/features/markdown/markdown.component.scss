@@ -1,5 +1,17 @@
-:host {
+.app-markdown {
   display: block;
   word-break: break-word;
   overflow-x: hidden;
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  // pre {
+  //   background-color: grey;
+  //   padding: 10px;
+  //   color: black;
+  // }
 }

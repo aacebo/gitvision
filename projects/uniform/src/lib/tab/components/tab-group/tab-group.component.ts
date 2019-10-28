@@ -33,22 +33,24 @@ export class UniTabGroupComponent implements AfterContentInit {
   readonly tabs: QueryList<UniTabComponent>;
 
   ngAfterContentInit() {
-    this._setActive();
+    setTimeout(() => this._setActive(), 100);
   }
 
   select(i: number) {
     this.active = i;
-    this.selected.emit(i);
     this._setActive();
+    this.selected.emit(i);
   }
 
   private _setActive() {
-    this.tabs.forEach((tab, i) => {
+    const tabs = this.tabs.toArray();
+
+    for (let i = 0; i < tabs.length; i++) {
       if (i === +this.active) {
-        tab.active = true;
+        tabs[i].active = true;
       } else {
-        tab.active = false;
+        tabs[i].active = false;
       }
-    });
+    }
   }
 }

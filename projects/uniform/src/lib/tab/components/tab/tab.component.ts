@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy, Input, ContentChild, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, ContentChild, Output, EventEmitter } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 import { UniTabLabelComponent } from '../tab-label';
 
@@ -18,20 +19,18 @@ export class UniTabComponent {
   @Input() label?: string;
 
   @Input()
-  get active() { return this._active; }
+  get active() { return this.active$.value; }
   set active(v: boolean) {
-    this._active = v;
+    this.active$.next(v);
 
     if (v) {
       this.selected.emit();
-      this._cdr.markForCheck();
     }
   }
 
   @Output() selected = new EventEmitter<void>();
-  @ContentChild(UniTabLabelComponent, { static: true }) uniLabel?: UniTabLabelComponent;
+  @ContentChild(UniTabLabelComponent, { static: true })
+  readonly uniLabel?: UniTabLabelComponent;
 
-  private _active = false;
-
-  constructor(private readonly _cdr: ChangeDetectorRef) { }
+  readonly active$ = new BehaviorSubject(false);
 }
