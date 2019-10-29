@@ -1,6 +1,7 @@
-import { Directive, Input, OnInit, ElementRef, TemplateRef } from '@angular/core';
+import { Directive, Input, OnInit, ElementRef, TemplateRef, Injector, ComponentFactoryResolver } from '@angular/core';
 import { OverlayRef, Overlay } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
+import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 import { UniPosition, getUniPosition } from '../core/position';
 import { UniTooltipComponent } from './tooltip.component';
@@ -15,11 +16,16 @@ import { UniTooltipComponent } from './tooltip.component';
 })
 export class UniTooltipDirective implements OnInit {
   @Input('uniTooltip') content: string | TemplateRef<any>;
-  @Input('uniTooltipDisabled') disabled = false;
   @Input('uniTooltipPosition') position = UniPosition.Top;
   @Input('uniTooltipPanelClass') panelClass?: string;
   @Input('uniTooltipOrigin') origin: HTMLElement;
+  @Input('uniTooltipDisabled')
+  get disabled() { return this._disabled; }
+  set disabled(v: boolean) {
+    this._disabled = coerceBooleanProperty(v);
+  }
 
+  private _disabled = false;
   private _overlayRef: OverlayRef;
 
   private get _vertical() {
@@ -40,6 +46,8 @@ export class UniTooltipDirective implements OnInit {
   constructor(
     private readonly _overlay: Overlay,
     private readonly _el: ElementRef<HTMLElement>,
+    private readonly _injector: Injector,
+    private readonly _resolver: ComponentFactoryResolver,
   ) {}
 
   ngOnInit() {
@@ -53,7 +61,14 @@ export class UniTooltipDirective implements OnInit {
   onMouseEnter() {
     if (!this.disabled && !this._overlayRef.hasAttached()) {
       this._overlayRef.updatePositionStrategy(this._positionStrategy);
-      const portal = new ComponentPortal(UniTooltipComponent);
+
+      const portal = new ComponentPortal(
+        UniTooltipComponent,
+        undefined,
+        new PortalInjector(this._injector, undefined),
+        this._resolver,
+      );
+
       const ref = this._overlayRef.attach(portal);
       ref.instance.content = this.content;
       ref.instance.position = this.position;

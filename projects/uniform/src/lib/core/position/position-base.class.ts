@@ -1,9 +1,9 @@
-import { Input, TemplateRef, AfterViewInit } from '@angular/core';
+import { Input, TemplateRef, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { UniPosition } from './position.enum';
 
-export class UniPositionBase implements AfterViewInit {
+export class UniPositionBase implements OnInit {
   @Input() content: string | TemplateRef<any>;
   @Input() position: UniPosition;
 
@@ -13,7 +13,7 @@ export class UniPositionBase implements AfterViewInit {
     return typeof this.content === 'string';
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.template$.next(this.isString ? undefined : this.content as TemplateRef<any>);
   }
 }

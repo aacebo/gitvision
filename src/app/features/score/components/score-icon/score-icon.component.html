@@ -1,9 +1,10 @@
 <div
   class="score-icon--container"
-  uniPopover="test"
   uniPopoverPosition="bottom left"
-  uniPopoverTrigger="hover"
+  uniPopoverTrigger="click"
   uniPopoverHasBackdrop="false"
+  [uniPopover]="scoreTpl"
+  [uniPopoverDisabled]="!hasPopover"
 >
   <uni-icon
     icon="fa-certificate"
@@ -13,3 +14,11 @@
     {{ score.final | score }}
   </span>
 </div>
+
+<ng-template #scoreTpl>
+  <uni-progress
+    mode="determinate"
+    value="53"
+    total="100"
+  ></uni-progress>
+</ng-template>

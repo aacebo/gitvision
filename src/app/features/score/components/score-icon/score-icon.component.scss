@@ -3,6 +3,10 @@
 :host {
   display: block;
 
+  &.has-popover {
+    cursor: pointer;
+  }
+
   &.success {
     uni-icon {
       color: $green;
